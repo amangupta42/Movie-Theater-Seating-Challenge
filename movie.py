@@ -103,9 +103,3 @@ filepath = os.path.abspath('seats.txt')
 print(str(filepath))
 f.close()
 o.close()
-      
-
-
-                   
-            
-    
