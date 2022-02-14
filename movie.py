@@ -87,7 +87,9 @@ def safety_padding(row,column,num_tix):                                 #add pad
 
 for request in requests:                                                #process requests one by one
     [req_no, num_tix] = request.split(' ')                              #split into request no and number of tickets reqd.
-    if(total_seats_free>=int(num_tix)):
+    if(int(num_tix)>20):
+        o.writelines(req_no + " Group size limited to 20 \n")
+    elif(total_seats_free>=int(num_tix)):
         find_seats(req_no, int(num_tix))
         seats = [x for x in seatmap[req_no]]
 
@@ -96,7 +98,7 @@ for request in requests:                                                #process
         o.writelines(",".join(seatmap[req_no]))
         o.writelines("\n")
     else:
-        o.writelines("Not enough seats for request \n")
+        o.writelines(req_no + " Not enough seats for request \n")
 
 
 filepath = os.path.abspath('seats.txt')
